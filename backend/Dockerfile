@@ -1,14 +1,11 @@
 # Use Java 17 base image
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jdk-jammy
 
 # Set working directory
 WORKDIR /app
 
-# Copy jar file into container
-COPY target/musicplayer-0.0.1-SNAPSHOT.jar app.jar
-
-# Expose port
-EXPOSE 8080
+# Copy jar file
+COPY target/*.jar app.jar
 
 # Run the application
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
